@@ -1,7 +1,9 @@
-import { CssBaseline, ThemeProvider, Typography } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/navbar';
+import IndexRouter from './utils/router/IndexRouter';
 import { darkTheme, lightTheme } from './utils/theme';
 
 const App = () => {
@@ -13,7 +15,9 @@ const App = () => {
 
             <Navbar />
 
-            <Typography component="p">Hello sir...</Typography>
+            <BrowserRouter>
+                <IndexRouter />
+            </BrowserRouter>
         </ThemeProvider>
     );
 };
