@@ -8,14 +8,11 @@ const logger = createLogger({
     diff: true
 });
 
-const middleware = [];
-middleware.push(logger);
-middleware.push(thunk);
-const enhancers = [...middleware];
+const middleware = [logger, thunk];
 
 export const store = configureStore({
     reducer: {
         theme: themeReducer
     },
-    middleware: enhancers
+    middleware
 });
