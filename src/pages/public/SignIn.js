@@ -1,7 +1,8 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import SignInSchema from '../../schemas/SignInSchema';
 import { handleUserSignIn } from '../../slices/auth/signInUserSlice';
 
@@ -12,6 +13,15 @@ const defaultSignInValues = {
 
 const SignIn = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { isLoading, isCompleted, error } = useSelector((state) => state.userSignIn);
+
+    useEffect(() => {
+        if (isCompleted && !Boolean(error)) navigate('/');
+
+        // eslint-disable-next-line
+    }, [isCompleted]);
 
     const formik = useFormik({
         initialValues: defaultSignInValues,
@@ -62,6 +72,7 @@ const SignIn = () => {
                     onChange={formik.handleChange}
                     margin="normal"
                     variant="outlined"
+                    disabled={isLoading}
                     fullWidth
                 />
 
@@ -77,19 +88,43 @@ const SignIn = () => {
                     onChange={formik.handleChange}
                     margin="normal"
                     variant="outlined"
+                    disabled={isLoading}
                     fullWidth
                 />
 
                 <Button
-                    variant="outlined"
                     fullWidth
+                    variant="outlined"
                     type="submit"
+                    disabled={isLoading}
                     sx={{
                         my: 2
                     }}
                 >
                     Sign In
                 </Button>
+            </Box>
+
+            <Box
+                sx={{
+                    width: '100%',
+                    display: 'flex',
+                    gap: '6px'
+                }}
+            >
+                <Typography>Don't have an account? </Typography>
+
+                <Link to="/signup">
+                    <Typography
+                        sx={{
+                            fontWeight: 'bold',
+                            color: '#3f50b5',
+                            textDecoration: 'none'
+                        }}
+                    >
+                        Sign Up
+                    </Typography>
+                </Link>
             </Box>
         </Container>
     );
