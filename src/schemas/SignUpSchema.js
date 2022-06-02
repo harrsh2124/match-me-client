@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 
+const phoneRegExp = /^[6-9]\d{9}$/;
+
 const SignUpSchema = Yup.object().shape({
     firstName: Yup.string().required('Please enter the first name.'),
 
@@ -19,7 +21,7 @@ const SignUpSchema = Yup.object().shape({
 
     contactNumber: Yup.string()
         .required('Please enter the contact number.')
-        .length(10, 'Please enter a valid contact number.'),
+        .matches(phoneRegExp, 'Please enter a valid contact number.'),
 
     gender: Yup.string().oneOf(['male', 'female'], 'Gender should be male or female only.')
 });

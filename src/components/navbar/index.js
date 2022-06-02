@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <Box
             sx={{
-                mb: '4rem'
+                pb: '4rem'
             }}
         >
             <AppBar position="fixed">

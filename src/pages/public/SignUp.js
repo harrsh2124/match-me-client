@@ -33,7 +33,7 @@ const SignUp = () => {
     const { isLoading, isCompleted, error } = useSelector((state) => state.userSignUp);
 
     useEffect(() => {
-        if (isCompleted && !Boolean(error)) navigate('/');
+        if (isCompleted && !Boolean(error)) navigate('/verify-user?emailSent=true');
 
         // eslint-disable-next-line
     }, [isCompleted]);

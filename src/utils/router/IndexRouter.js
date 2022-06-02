@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { SignIn, SignUp } from '../../pages/public';
+import { SignIn, SignUp, VerifyUser } from '../../pages/public';
 
 const IndexRouter = () => {
     return (
@@ -7,6 +7,8 @@ const IndexRouter = () => {
             <Route path="/signin" element={<SignIn />} />
 
             <Route path="/signup" element={<SignUp />} />
+
+            <Route path="/verify-user" element={<VerifyUser />} />
         </Routes>
     );
 };
