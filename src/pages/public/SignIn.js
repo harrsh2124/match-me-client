@@ -1,7 +1,9 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import SignInSchema from '../../schemas/SignInSchema';
+import { handleUserSignIn } from '../../slices/auth/signInUserSlice';
 
 const defaultSignInValues = {
     email: '',
@@ -9,11 +11,13 @@ const defaultSignInValues = {
 };
 
 const SignIn = () => {
+    const dispatch = useDispatch();
+
     const formik = useFormik({
         initialValues: defaultSignInValues,
         validationSchema: SignInSchema,
         onSubmit: (values) => {
-            console.log(values);
+            dispatch(handleUserSignIn(values));
         }
     });
 
