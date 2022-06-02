@@ -1,4 +1,6 @@
 import axios from 'axios';
+import _ from 'lodash';
+import { setToken } from '../utils/handleUserToken';
 import { BACKEND_URL } from './constants';
 
 // Add a request interceptor
@@ -26,6 +28,10 @@ axios.interceptors.response.use(
         if (response.success) {
             // Set user token if the token is present in response.
 
+            const userToken = _.get(response, 'data.data.token');
+            if (userToken) setToken(userToken);
+
+            console.log(response);
             return response;
         }
 
@@ -34,9 +40,10 @@ axios.interceptors.response.use(
     function (error) {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
-        console.log(error.response);
 
-        return Promise.reject(error.response.data);
+        const errorResponse = _.get(error, 'response.data');
+        console.log(errorResponse);
+        return Promise.reject(errorResponse);
     }
 );
 

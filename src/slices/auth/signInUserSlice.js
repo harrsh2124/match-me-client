@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { UserSignInApi } from '../../api/userAuthApi';
 
@@ -5,8 +6,7 @@ export const handleUserSignIn = createAsyncThunk(
     'auth/signin',
     async (body, { rejectWithValue }) => {
         try {
-            const data = await UserSignInApi(body);
-            return { data };
+            await UserSignInApi(body);
         } catch (error) {
             return rejectWithValue(error);
         }
@@ -15,8 +15,7 @@ export const handleUserSignIn = createAsyncThunk(
 
 const initialState = {
     isLoading: false,
-    error: null,
-    token: ''
+    error: null
 };
 
 export const userSignInSlice = createSlice({
@@ -29,11 +28,10 @@ export const userSignInSlice = createSlice({
         },
         [handleUserSignIn.fulfilled]: (state, action) => {
             state.isLoading = false;
-            state.token = action.payload.token;
         },
         [handleUserSignIn.rejected]: (state, action) => {
             state.isLoading = false;
-            state.error = action.payload.data.message;
+            state.error = _.get(action, 'payload.data.message', 'Something went wrong.');
         }
     }
 });
