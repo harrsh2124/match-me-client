@@ -9,3 +9,13 @@ export const UserSignInApi = async (body) => {
 
     return response;
 };
+
+export const UserSignUpApi = async (body) => {
+    const response = await request({
+        url: '/auth/signup',
+        method: 'POST',
+        body
+    });
+
+    return response;
+};

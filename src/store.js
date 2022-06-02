@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './slices/theme/themeSlice';
 import userSignInReducer from './slices/auth/signInUserSlice';
+import userSignUpReducer from './slices/auth/signUpUserSlice';
 
 const logger = createLogger({
     duration: true,
@@ -14,7 +15,8 @@ const middleware = [logger, thunk];
 export const store = configureStore({
     reducer: {
         theme: themeReducer,
-        userSignIn: userSignInReducer
+        userSignIn: userSignInReducer,
+        userSignUp: userSignUpReducer
     },
     middleware
 });

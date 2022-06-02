@@ -14,9 +14,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import SignUpSchema from '../../schemas/SignUpSchema';
-import { handleUserSignIn } from '../../slices/auth/signInUserSlice';
+import { handleUserSignUp } from '../../slices/auth/signUpUserSlice';
 
-const defaultSignInValues = {
+const defaultSignUpValues = {
     firstName: '',
     lastName: '',
     email: '',
@@ -30,7 +30,7 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { isLoading, isCompleted, error } = useSelector((state) => state.userSignIn);
+    const { isLoading, isCompleted, error } = useSelector((state) => state.userSignUp);
 
     useEffect(() => {
         if (isCompleted && !Boolean(error)) navigate('/');
@@ -39,10 +39,10 @@ const SignUp = () => {
     }, [isCompleted]);
 
     const formik = useFormik({
-        initialValues: defaultSignInValues,
+        initialValues: defaultSignUpValues,
         validationSchema: SignUpSchema,
         onSubmit: (values) => {
-            dispatch(handleUserSignIn(values));
+            dispatch(handleUserSignUp(values));
         }
     });
 
@@ -62,7 +62,7 @@ const SignUp = () => {
                     my: '3rem'
                 }}
             >
-                Sign In
+                Sign Up
             </Typography>
 
             <Box
@@ -165,8 +165,7 @@ const SignUp = () => {
                     id="contactNumber"
                     autoComplete="contactNumber"
                     label="Contact Number"
-                    type="number"
-                    min="1"
+                    type="text"
                     required={true}
                     value={formik.values.contactNumber}
                     helperText={formik.touched.contactNumber ? formik.errors.contactNumber : null}
@@ -212,7 +211,7 @@ const SignUp = () => {
                         my: 2
                     }}
                 >
-                    Sign In
+                    Sign Up
                 </Button>
             </Box>
 
@@ -223,9 +222,9 @@ const SignUp = () => {
                     gap: '6px'
                 }}
             >
-                <Typography>Don't have an account? </Typography>
+                <Typography>Already have an account? </Typography>
 
-                <Link to="/signup">
+                <Link to="/signin">
                     <Typography
                         sx={{
                             fontWeight: 'bold',
@@ -233,7 +232,7 @@ const SignUp = () => {
                             textDecoration: 'none'
                         }}
                     >
-                        Sign Up
+                        Sign In
                     </Typography>
                 </Link>
             </Box>
