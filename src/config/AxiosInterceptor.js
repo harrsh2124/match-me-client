@@ -7,6 +7,8 @@ import { BACKEND_URL } from './constants';
 axios.interceptors.request.use(
     function (config) {
         // Do something before request is sent
+        const token = localStorage.getItem('match-me-token');
+        if (token) config.headers.Authorization = `Bearer ${token}`;
 
         config.headers['Content-Type'] = 'application/json';
 

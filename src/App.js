@@ -10,21 +10,21 @@ const App = () => {
     const { mode } = useSelector((state) => state.theme);
 
     return (
-        <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
-            <CssBaseline />
+        <BrowserRouter>
+            <ThemeProvider theme={mode === 'light' ? lightTheme : darkTheme}>
+                <CssBaseline />
 
-            <Box
-                sx={{
-                    height: '100vh'
-                }}
-            >
-                <Navbar />
+                <Box
+                    sx={{
+                        height: '100vh'
+                    }}
+                >
+                    <Navbar />
 
-                <BrowserRouter>
                     <IndexRouter />
-                </BrowserRouter>
-            </Box>
-        </ThemeProvider>
+                </Box>
+            </ThemeProvider>
+        </BrowserRouter>
     );
 };
 
