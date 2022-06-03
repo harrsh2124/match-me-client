@@ -1,12 +1,12 @@
 import _ from 'lodash';
-import { Box, Container, Pagination } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Box, CircularProgress, Container, Pagination } from '@mui/material';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import User from '../../components/dashboard/user';
 import { handleFetchUsersList } from '../../slices/dashboard/usersListSlice';
 
 const Dashboard = () => {
-    const { users, pagination } = useSelector((state) => state.usersList);
+    const { users, pagination, isLoading } = useSelector((state) => state.usersList);
     const dispatch = useDispatch();
 
     const [usersList, setUsersList] = useState([]);
@@ -38,31 +38,47 @@ const Dashboard = () => {
                 py: '1rem'
             }}
         >
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexFlow: 'column',
-                    gap: '1rem',
-                    my: '1rem'
-                }}
-            >
-                {usersList.map((user) => {
-                    return <User key={user._id} user={user} />;
-                })}
-            </Box>
+            {isLoading ? (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '80vh'
+                    }}
+                >
+                    <CircularProgress />
+                </Box>
+            ) : (
+                <Fragment>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexFlow: 'column',
+                            gap: '1rem',
+                            my: '1rem'
+                        }}
+                    >
+                        {usersList.map((user) => {
+                            return <User key={user._id} user={user} />;
+                        })}
+                    </Box>
 
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-            >
-                <Pagination
-                    count={_.get(pagination, 'totalPages', 1)}
-                    page={_.get(pagination, 'currentPage', 1)}
-                    onChange={handlePageChange}
-                />
-            </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center'
+                        }}
+                    >
+                        <Pagination
+                            count={_.get(pagination, 'totalPages', 1)}
+                            page={_.get(pagination, 'currentPage', 1)}
+                            variant="outlined"
+                            onChange={handlePageChange}
+                        />
+                    </Box>
+                </Fragment>
+            )}
         </Container>
     );
 };

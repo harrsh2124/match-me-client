@@ -16,7 +16,10 @@ const App = () => {
 
                 <Box
                     sx={{
-                        height: '100vh'
+                        height: '100%',
+                        minHeight: '100vh',
+                        pt: '4rem',
+                        pb: '1rem'
                     }}
                 >
                     <Navbar />

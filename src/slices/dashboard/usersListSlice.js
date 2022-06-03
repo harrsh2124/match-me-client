@@ -14,7 +14,7 @@ export const handleFetchUsersList = createAsyncThunk(
 );
 
 const initialState = {
-    isLoading: false,
+    isLoading: true,
     isCompleted: false,
     error: null,
     users: [],

@@ -10,11 +10,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
 
     return (
-        <Box
-            sx={{
-                pb: '4rem'
-            }}
-        >
+        <Box>
             <AppBar position="fixed">
                 <Toolbar>
                     <Typography
