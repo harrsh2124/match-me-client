@@ -17,7 +17,8 @@ const initialState = {
     isLoading: false,
     isCompleted: false,
     error: null,
-    users: []
+    users: [],
+    pagination: null
 };
 
 export const usersListSlice = createSlice({
@@ -34,6 +35,7 @@ export const usersListSlice = createSlice({
             state.isLoading = false;
             state.isCompleted = true;
             state.users = _.get(action, 'payload.data.data.result', []);
+            state.pagination = _.get(action, 'payload.data.data.meta', null);
         },
         [handleFetchUsersList.rejected]: (state, action) => {
             state.error = _.get(action, 'payload.data.message', 'Something went wrong.');

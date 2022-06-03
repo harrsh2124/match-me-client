@@ -1,45 +1,69 @@
-import { Box, Typography } from '@mui/material';
+import _ from 'lodash';
+import { Box, Container, Pagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import User from '../../components/dashboard/user';
 import { handleFetchUsersList } from '../../slices/dashboard/usersListSlice';
 
 const Dashboard = () => {
-    const { users } = useSelector((state) => state.usersList);
+    const { users, pagination } = useSelector((state) => state.usersList);
     const dispatch = useDispatch();
 
     const [usersList, setUsersList] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        if (!users.length) {
-            console.log('No users');
-            dispatch(handleFetchUsersList());
+        if (!users.length || _.get(pagination, 'currentPage', 1) !== currentPage) {
+            setUsersList([]);
+            dispatch(
+                handleFetchUsersList({
+                    page: currentPage
+                })
+            );
         } else {
-            console.log(users);
-            setUsersList((prevUsers) => {
-                return [...prevUsers, ...users];
-            });
+            console.log(users, pagination);
+            setUsersList([...users]);
         }
 
         // eslint-disable-next-line
-    }, [users]);
+    }, [users, currentPage]);
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+    };
 
     return (
-        <Box>
-            {usersList.map((user) => {
-                return (
-                    <Box
-                        key={user._id}
-                        sx={{
-                            display: 'flex',
-                            gap: '0.5rem'
-                        }}
-                    >
-                        <Typography>{user.firstName}</Typography>
-                        <Typography>{user.lastName}</Typography>
-                    </Box>
-                );
-            })}
-        </Box>
+        <Container
+            sx={{
+                py: '1rem'
+            }}
+        >
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexFlow: 'column',
+                    gap: '1rem',
+                    my: '1rem'
+                }}
+            >
+                {usersList.map((user) => {
+                    return <User key={user._id} user={user} />;
+                })}
+            </Box>
+
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}
+            >
+                <Pagination
+                    count={_.get(pagination, 'totalPages', 1)}
+                    page={_.get(pagination, 'currentPage', 1)}
+                    onChange={handlePageChange}
+                />
+            </Box>
+        </Container>
     );
 };
 

@@ -1,0 +1,74 @@
+.user-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 578px) {
+    .user-container {
+        flex-flow: column;
+    }
+
+    .user-text-container {
+        width: 100%;
+    }
+}
+
+.user-text-container {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    height: 100%;
+    gap: 0.5rem;
+}
+
+.user-name {
+    display: flex;
+    gap: 5px;
+}
+
+.user-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 845px) {
+    .user-details {
+        flex-flow: column;
+        gap: 0.5rem;
+    }
+}
+
+.user-location {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 845px) {
+    .user-location {
+        flex-flow: column;
+        gap: 0.5rem;
+    }
+}
+
+.view-profile-button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.dark-button {
+    color: #0f0e0e;
+    background-color: #eeeeee;
+}
+
+.light-button {
+    background-color: #0f0e0e;
+    color: #eeeeee;
+}
