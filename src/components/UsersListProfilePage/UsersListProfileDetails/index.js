@@ -1,9 +1,9 @@
 import { Box, Container, Typography } from '@mui/material';
 import React from 'react';
 import { RANDOM_USER_PROFILE_URL } from '../../../config/constants';
-import styles from './otherProfileDetails.css';
+import styles from './usersListProfileDetails.module.css';
 
-const OtherProfileDetails = (props) => {
+const UsersListProfile = (props) => {
     return (
         <Container
             maxWidth="xs"
@@ -29,4 +29,4 @@ const OtherProfileDetails = (props) => {
     );
 };
 
-export default OtherProfileDetails;
+export default UsersListProfile;

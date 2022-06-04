@@ -1,4 +1,4 @@
-.user-container {
+.userContainer {
     display: flex;
     align-items: center;
     border: 1px solid;
@@ -8,16 +8,16 @@
 }
 
 @media only screen and (max-width: 578px) {
-    .user-container {
+    .userContainer {
         flex-flow: column;
     }
 
-    .user-text-container {
+    .userTextContainer {
         width: 100%;
     }
 }
 
-.user-text-container {
+.userTextContainer {
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
@@ -26,46 +26,46 @@
     gap: 0.5rem;
 }
 
-.user-name {
+.userName {
     display: flex;
     gap: 5px;
 }
 
-.user-details {
+.userDetails {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
-.user-details p {
+.userDetails p {
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
 }
 
 @media only screen and (max-width: 880px) {
-    .user-details {
+    .userDetails {
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
 }
 
-.user-location {
+.userLocation {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
 @media only screen and (max-width: 880px) {
-    .user-location {
+    .userLocation {
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
 }
 
-.view-profile-button {
+.viewProfileButton {
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -73,12 +73,12 @@
     min-width: 125px;
 }
 
-.dark-button {
+.darkButton {
     color: #0f0e0e;
     background-color: #eeeeee;
 }
 
-.light-button {
+.lightButton {
     background-color: #0f0e0e;
     color: #eeeeee;
 }

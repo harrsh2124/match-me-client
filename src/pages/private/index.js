@@ -1,4 +1,4 @@
 import Dashboard from './Dashboard';
-import Profile from './Profile';
+import UsersListProfilePage from './UsersListProfilePage';
 
-export { Dashboard, Profile };
+export { Dashboard, UsersListProfilePage };

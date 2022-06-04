@@ -2,7 +2,7 @@ import { Box, CircularProgress, Container, Pagination } from '@mui/material';
 import _ from 'lodash';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import User from '../../components/dashboard/user';
+import UserCard from '../../components/Dashboard/UserCard';
 import { handleFetchUsersList } from '../../slices/dashboard/usersListSlice';
 
 const Dashboard = () => {
@@ -60,7 +60,7 @@ const Dashboard = () => {
                         }}
                     >
                         {usersList.map((user) => {
-                            return <User key={user._id} user={user} />;
+                            return <UserCard key={user._id} user={user} />;
                         })}
                     </Box>
 

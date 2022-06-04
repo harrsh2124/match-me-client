@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard, Profile } from '../../pages/private';
+import { Dashboard, UsersListProfilePage } from '../../pages/private';
 import { SignIn, SignUp, VerifyUser } from '../../pages/public';
 
 const IndexRouter = () => {
@@ -11,7 +11,7 @@ const IndexRouter = () => {
 
             <Route path="/verify-user" element={<VerifyUser />} />
 
-            <Route path="/profile/:_id" element={<Profile />} />
+            <Route path="/profile/:_id" element={<UsersListProfilePage />} />
 
             <Route path="/" element={<Dashboard />} />
         </Routes>
