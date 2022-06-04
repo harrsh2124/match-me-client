@@ -2,9 +2,10 @@
     "userDetails": {
         "thumbnail": "https://randomuser.me/api/portraits/men/73.jpg",
         "email": "dev@yopmail.com",
+        "contactNumber": 9999887272,
         "firstName": "John",
         "lastName": "Doe",
-        "dob": 914237416
+        "dob": "914237416"
     },
 
     "personalDetails": {
@@ -16,13 +17,14 @@
             "address": "232, Isanpur",
             "city": "Ahmedabad",
             "state": "Gujarat",
-            "country": "India"
+            "country": "India",
+            "pincode": "382443"
         }
     },
 
     "otherDetails": {
         "kundli": {
-            "manglik": false,
+            "manglik": "No",
             "maritalStatus": "Unmarried"
         },
 
@@ -43,13 +45,13 @@
             "weight": 80,
             "complexion": "Wheatish",
             "diet": "Vegeterian",
-            "physicalDisability": false
+            "physicalDisability": "None"
         },
 
         "religion": {
             "religion": "Hindu",
             "caste": "Patel",
-            "sunCaste": "Kadva Patel"
+            "subCaste": "Kadva Patel"
         },
 
         "aboutMe": "I'm an old-school guy with values for life. I enjoy exploring new places, meeting new people, and writing and reading blogs. I love philosophy, psychology, traveling, and photography. I am tech-savvy and love new gadgets and software. My dad is a wood trader and my mom is a homemaker. I am a single child."

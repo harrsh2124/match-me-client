@@ -24,9 +24,9 @@ const UserCard = (props) => {
 
             <Box className={styles.userTextContainer}>
                 <Box className={styles.userName}>
-                    <Typography>{user.firstName}</Typography>
-                    <Typography>{user.lastName}</Typography>
-                    <Typography>{user.email}</Typography>
+                    <Typography>
+                        {user.firstName} {user.lastName} {user.email}
+                    </Typography>
                 </Box>
 
                 <Box className={styles.userDetails}>
