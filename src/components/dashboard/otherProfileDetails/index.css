@@ -1,0 +1,13 @@
+.bold {
+    font-weight: 600;
+}
+
+.user-name {
+    display: flex;
+    gap: 5px;
+    margin: 1rem auto 0;
+}
+
+.user-name p {
+    font-size: 2rem;
+}

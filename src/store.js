@@ -20,7 +20,7 @@ export const store = configureStore({
         userSignIn: userSignInReducer,
         userSignUp: userSignUpReducer,
         usersList: usersListReducer,
-        userDetailsByID: userDetailsByIdReducer
+        userDetailsById: userDetailsByIdReducer
     },
     middleware
 });

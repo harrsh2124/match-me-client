@@ -1,17 +1,38 @@
+import { Box, CircularProgress } from '@mui/material';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { handleFetchUserDetails } from '../../slices/dashboard/usersDetailsSlice';
+import { useSelector } from 'react-redux';
+import OtherProfileDetails from '../../components/dashboard/otherProfileDetails';
 
 const Profile = () => {
-    const dispatch = useDispatch();
-    const { _id } = useParams();
+    const { isLoading } = useSelector((state) => state.userDetailsById);
 
     useEffect(() => {
-        dispatch(handleFetchUserDetails(_id));
+        // dispatch(handleFetchUserDetails(_id));
+        // eslint-disable-next-line
     }, []);
 
-    return <div>Profile</div>;
+    return (
+        <Box
+            sx={{
+                py: '1rem'
+            }}
+        >
+            {!isLoading ? (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '80vh'
+                    }}
+                >
+                    <CircularProgress />
+                </Box>
+            ) : (
+                <OtherProfileDetails />
+            )}
+        </Box>
+    );
 };
 
 export default Profile;
