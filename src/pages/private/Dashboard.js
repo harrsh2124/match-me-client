@@ -13,13 +13,9 @@ const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        if (!users.length || _.get(pagination, 'currentPage', 1) !== currentPage) {
+        if (!users.length) {
             setUsersList([]);
-            dispatch(
-                handleFetchUsersList({
-                    page: currentPage
-                })
-            );
+            fetchUsers();
         } else {
             console.log(users, pagination);
             setUsersList([...users]);
@@ -28,8 +24,17 @@ const Dashboard = () => {
         // eslint-disable-next-line
     }, [users, currentPage]);
 
+    const fetchUsers = (page) => {
+        dispatch(
+            handleFetchUsersList({
+                page: page || currentPage
+            })
+        );
+    };
+
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
+        fetchUsers(value);
     };
 
     return (

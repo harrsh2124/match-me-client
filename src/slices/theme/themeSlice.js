@@ -12,7 +12,7 @@ export const themeSlice = createSlice({
         toggleTheme: (state) => {
             const toggledTheme = state.mode === 'light' ? 'dark' : 'light';
             state.mode = toggledTheme;
-            localStorage.setItem(`${APP_PREFIX}-theme`, toggledTheme);
+            // localStorage.setItem(`${APP_PREFIX}-theme`, toggledTheme);
         }
     }
 });

@@ -5,5 +5,27 @@
 }
 
 .userName > p {
-    font-size: 2rem;
+    font-size: 2em;
+}
+
+.heading {
+    font-size: 1.5em;
+    margin-top: 1rem;
+}
+
+.containerFlex {
+    display: flex;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 490px) {
+    .containerFlex {
+        flex-flow: column;
+        gap: 0;
+    }
+}
+
+.flexDetail {
+    display: flex;
+    gap: 5px;
 }

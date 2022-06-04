@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { GetUserDetailsByIdApi } from '../../api/getUsersApi';
 
 export const handleFetchUserDetails = createAsyncThunk(
-    'dashboard/users',
+    'dashboard/userDetails',
     async (_id, { rejectWithValue }) => {
         try {
             return await GetUserDetailsByIdApi(_id);
