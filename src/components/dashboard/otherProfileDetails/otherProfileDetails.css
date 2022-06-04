@@ -1,13 +1,9 @@
-.bold {
-    font-weight: 600;
-}
-
-.user-name {
+.userName {
     display: flex;
     gap: 5px;
     margin: 1rem auto 0;
 }
 
-.user-name p {
+.userName > p {
     font-size: 2rem;
 }

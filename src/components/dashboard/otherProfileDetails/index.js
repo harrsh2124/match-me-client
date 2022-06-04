@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
 import React from 'react';
 import { RANDOM_USER_PROFILE_URL } from '../../../config/constants';
-import './index.css';
+import styles from './otherProfileDetails.css';
 
 const OtherProfileDetails = (props) => {
     return (
@@ -21,7 +21,7 @@ const OtherProfileDetails = (props) => {
                 }}
             />
 
-            <Box className="user-name">
+            <Box className={styles.userName}>
                 <Typography>John</Typography>
                 <Typography>Doe</Typography>
             </Box>

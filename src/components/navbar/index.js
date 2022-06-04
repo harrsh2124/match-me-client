@@ -2,12 +2,14 @@ import { DarkMode as DarkModeIcon, LightMode as LightModeIcon } from '@mui/icons
 import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { APP_NAME } from '../../config/constants';
 import { toggleTheme } from '../../slices/theme/themeSlice';
 
 const Navbar = () => {
     const { mode } = useSelector((state) => state.theme);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <Box>
@@ -16,6 +18,9 @@ const Navbar = () => {
                     <Typography
                         variant="h6"
                         component="div"
+                        onClick={() => {
+                            navigate('/');
+                        }}
                         sx={{
                             textTransform: 'capitalize',
                             cursor: 'pointer'
