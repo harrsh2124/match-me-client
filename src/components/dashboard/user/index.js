@@ -3,8 +3,8 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RANDOM_USER_PROFILE_URL } from '../../config/constants';
-import './user.css';
+import { RANDOM_USER_PROFILE_URL } from '../../../config/constants';
+import './index.css';
 
 const User = (props) => {
     const navigate = useNavigate();
