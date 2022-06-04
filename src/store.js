@@ -5,6 +5,7 @@ import themeReducer from './slices/theme/themeSlice';
 import userSignInReducer from './slices/auth/signInUserSlice';
 import userSignUpReducer from './slices/auth/signUpUserSlice';
 import usersListReducer from './slices/dashboard/usersListSlice';
+import userDetailsByIdReducer from './slices/dashboard/usersDetailsSlice';
 
 const logger = createLogger({
     duration: true,
@@ -18,7 +19,8 @@ export const store = configureStore({
         theme: themeReducer,
         userSignIn: userSignInReducer,
         userSignUp: userSignUpReducer,
-        usersList: usersListReducer
+        usersList: usersListReducer,
+        userDetailsByID: userDetailsByIdReducer
     },
     middleware
 });

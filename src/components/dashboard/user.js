@@ -1,10 +1,13 @@
+import _ from 'lodash';
 import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RANDOM_USER_PROFILE_URL } from '../../config/constants';
 import './user.css';
 
 const User = (props) => {
+    const navigate = useNavigate();
     const { user } = props;
 
     const { mode } = useSelector((state) => state.theme);
@@ -43,6 +46,7 @@ const User = (props) => {
                 className={`view-profile-button ${
                     mode === 'light' ? 'light-button' : 'dark-button'
                 }`}
+                onClick={() => navigate(`/profile/${_.get(user, '_id')}`)}
             >
                 <Typography>View Profile</Typography>
             </Box>
